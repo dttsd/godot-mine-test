@@ -18,10 +18,10 @@ metadata/_edit_lock_ = true
 
 [node name="BlockArea" type="ReferenceRect" parent="." node_paths=PackedStringArray("nugget_spawner")]
 layout_mode = 0
-offset_left = 100.0
-offset_top = 190.0
-offset_right = 381.0
-offset_bottom = 448.0
+offset_left = 23.0
+offset_top = 28.0
+offset_right = 351.0
+offset_bottom = 605.0
 editor_only = false
 script = ExtResource("2_0xm2m")
 block_scene = ExtResource("1_ig7tw")
@@ -42,6 +42,6 @@ polygon = PackedVector2Array(704, 192, 832, 320, 832, 384, 896, 384, 896, 320, 1
 position = Vector2(912, 104)
 
 [node name="PlantSeed" type="Marker2D" parent="."]
-position = Vector2(384, 448)
+position = Vector2(498, 464)
 gizmo_extents = 40.6
 script = ExtResource("5_lquwl")
