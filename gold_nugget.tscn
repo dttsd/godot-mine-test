@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://cvkyotkra3n0h"]
+
+[ext_resource type="Texture2D" uid="uid://bd3cdususrniv" path="res://icon.svg" id="1_co74l"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_co74l"]
+bounce = 0.2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kle17"]
+size = Vector2(128, 128)
+
+[node name="Nugget" type="RigidBody2D"]
+physics_material_override = SubResource("PhysicsMaterial_co74l")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(18.892157, 18.892157, 0, 1)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_co74l")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.1, 0.1)
+shape = SubResource("RectangleShape2D_kle17")
