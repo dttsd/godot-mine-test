@@ -13,6 +13,7 @@ config_version=5
 config/name="mine test"
 run/main_scene="uid://boh88dpgxa4xl"
 config/features=PackedStringArray("4.5", "GL Compatibility")
+boot_splash/image="uid://bscd863y38lb0"
 config/icon="res://icon.svg"
 
 [display]

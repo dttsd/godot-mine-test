@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://b4cq4meb743g6" path="res://block_area.gd" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://cvkyotkra3n0h" path="res://gold_nugget.tscn" id="3_h2yge"]
 [ext_resource type="Script" uid="uid://txn2u7fd2oow" path="res://plant_seed.gd" id="5_lquwl"]
-[ext_resource type="Script" uid="uid://cwdbfj3sj18u7" path="res://button.gd" id="6_7mycd"]
+[ext_resource type="Script" path="res://button.gd" id="6_7mycd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lquwl"]
 radius = 43.829212
