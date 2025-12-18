@@ -1,10 +1,23 @@
-[gd_scene load_steps=6 format=3 uid="uid://boh88dpgxa4xl"]
+[gd_scene load_steps=11 format=3 uid="uid://boh88dpgxa4xl"]
 
 [ext_resource type="Script" uid="uid://bh8cywalbp0ds" path="res://main.gd" id="1_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://dco8kgexf41et" path="res://block.tscn" id="1_ig7tw"]
 [ext_resource type="Script" uid="uid://b4cq4meb743g6" path="res://block_area.gd" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://cvkyotkra3n0h" path="res://gold_nugget.tscn" id="3_h2yge"]
 [ext_resource type="Script" uid="uid://txn2u7fd2oow" path="res://plant_seed.gd" id="5_lquwl"]
+[ext_resource type="Script" uid="uid://cwdbfj3sj18u7" path="res://button.gd" id="6_7mycd"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lquwl"]
+radius = 43.829212
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7mycd"]
+size = Vector2(86, 90)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_lquwl"]
+rough = true
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lquwl"]
+size = Vector2(242.5, 19.5)
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -45,3 +58,54 @@ position = Vector2(912, 104)
 position = Vector2(498, 464)
 gizmo_extents = 40.6
 script = ExtResource("5_lquwl")
+
+[node name="PinJoint2D" type="PinJoint2D" parent="."]
+position = Vector2(503, 144)
+node_a = NodePath("StaticBody2D")
+node_b = NodePath("RigidBody2D")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="PinJoint2D"]
+position = Vector2(-40, -40)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PinJoint2D/StaticBody2D"]
+shape = SubResource("CircleShape2D_lquwl")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="PinJoint2D"]
+rotation = -1.0359763
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PinJoint2D/RigidBody2D"]
+position = Vector2(41, 44)
+shape = SubResource("RectangleShape2D_7mycd")
+debug_color = Color(0.6150124, 0.53718233, 0, 0.41960785)
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="PinJoint2D"]
+physics_material_override = SubResource("PhysicsMaterial_lquwl")
+constant_linear_velocity = Vector2(-50, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PinJoint2D/StaticBody2D2"]
+position = Vector2(361.25, 72)
+shape = SubResource("RectangleShape2D_lquwl")
+
+[node name="Container" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 928.0
+offset_top = 18.0
+offset_right = 1118.0
+offset_bottom = 58.0
+
+[node name="SpinBox" type="SpinBox" parent="Container"]
+layout_mode = 2
+min_value = 1.0
+value = 2.0
+rounded = true
+allow_greater = true
+
+[node name="Button" type="Button" parent="Container" node_paths=PackedStringArray("spinBox")]
+layout_mode = 2
+text = "Spawn Gold"
+script = ExtResource("6_7mycd")
+spinBox = NodePath("../SpinBox")
+
+[connection signal="pressed" from="Container/Button" to="BlockArea" method="spawnNugget"]
+[connection signal="pressed" from="Container/Button" to="Container/Button" method="_on_pressed"]
+[connection signal="spawn_nugget" from="Container/Button" to="BlockArea" method="spawnNugget"]

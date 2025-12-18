@@ -32,7 +32,10 @@ func _process(delta: float) -> void:
 	pass
 	
 func _on_block_died():
-	var nugget = nugget_scene.instantiate()
+	spawnNugget()
+	pass
 	
+func spawnNugget():
+	var nugget = nugget_scene.instantiate()
 	nugget_spawner.add_child(nugget)
 	pass
